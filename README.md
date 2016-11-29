@@ -1,2 +1,2 @@
 # bolg
-blog而已
+blog而已生生世世
