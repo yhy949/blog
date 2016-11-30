@@ -4,23 +4,24 @@
 <head>
 	<meta charset="utf-8">
 	<meta name= "viewport" content="width=device-width,initial-scale=1.0">
-
     <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
     <link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">
+    <%--<link rel="stylesheet" href="${home}/js/pure-release-0.6.0/pure-min.css">--%>
+    <%--<link rel="stylesheet" href="${home}/js/pure-release-0.6.0/grids-responsive-min.css">--%>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
+    <%--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">--%>
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
+    <%--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">--%>
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
+    <%--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>--%>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
+    <%--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>--%>
+    <link rel="stylesheet" href="${home}/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${home}/js/bootstrap/css/bootstrap-theme.min.css">
+    <script src="${home}/js/jquery-1.11.1/jquery.min.js"></script>
+    <script src="${home}/js/bootstrap/js/bootstrap.min.js"></script>
 
     <title>my blog</title>
 </head>
@@ -51,9 +52,9 @@
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">
                     <ul>
-                        <li><a href="http://andrewliu.tk/about/">About Me</a></li>
-                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
-                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                        <li><a href="#">About Me</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">GitHub</a></li>
                     </ul>
                 </div>
             </div>
