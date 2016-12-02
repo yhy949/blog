@@ -55,11 +55,18 @@
         <version>2.2.1</version>
         <scope>provided</scope>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
       <dependency>
-        <groupId>javax.servlet.jsp.jstl</groupId>
-        <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-        <version>1.2.1</version>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
       </dependency>
+
+      <!--<dependency>-->
+        <!--<groupId>javax.servlet.jsp.jstl</groupId>-->
+        <!--<artifactId>javax.servlet.jsp.jstl-api</artifactId>-->
+        <!--<version>1.2.1</version>-->
+      <!--</dependency>-->
       <!-- spring 相关 -->
       <dependency>
         <groupId>org.springframework</groupId>
@@ -179,6 +186,16 @@
         <artifactId>jackson-databind</artifactId>
         <version>${json-version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.9.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.4</version>
+      </dependency>
       <!-- Joda Time -->
       <dependency>
         <groupId>joda-time</groupId>
@@ -190,6 +207,12 @@
         <artifactId>joda-time-jsptags</artifactId>
         <version>1.1.1</version>
         <scope>runtime</scope>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+      <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4.7</version>
       </dependency>
       <!-- 数据源配置 -->
       <dependency>
@@ -257,6 +280,12 @@
         <artifactId>cglib-nodep</artifactId>
         <version>3.1</version>
       </dependency>
+      <!-- pinyin4j -->
+      <dependency>
+        <groupId>com.belerweb</groupId>
+        <artifactId>pinyin4j</artifactId>
+        <version>2.5.0</version>
+      </dependency>
     </dependencies>
   <build>
     <finalName>blitz</finalName>
@@ -274,4 +303,3 @@
     </plugins>
   </build>
 </project>
-
