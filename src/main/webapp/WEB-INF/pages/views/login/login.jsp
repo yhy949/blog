@@ -1,8 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +22,7 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="/images/assets/ico/favicon.png">
+        <link rel="shortcut icon" href="${home}/images/assets/ico/favicon.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${home}/images/assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${home}/images/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${home}/images/assets/ico/apple-touch-icon-72-precomposed.png">
@@ -45,7 +44,7 @@
                             	<p>
 	                            	This is a free responsive login form made with Bootstrap. 
 	                            	Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
-                            	</p>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -79,10 +78,10 @@
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<h3>...or login with:</h3>
                         	<div class="social-login-buttons">
-	                        	<a class="btn btn-link-2" href="#">
+	                        	<a class="btn btn-link-2" href="/WEB-INF/pages/views/blog/blog.jsp">
 	                        		<i class="fa fa-facebook"></i> Facebook
 	                        	</a>
-	                        	<a class="btn btn-link-2" href="#">
+	                        	<a class="btn btn-link-2" href="/WEB-INF/pages/views/user/user.jsp">
 	                        		<i class="fa fa-twitter"></i> Twitter
 	                        	</a>
 	                        	<a class="btn btn-link-2" href="#">
@@ -93,7 +92,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
 
 
@@ -105,7 +103,6 @@
         <!--[if lt IE 10]>
             <script src="/js/login/placeholder.js"></script>
         <![endif]-->
-
     </body>
 
 </html>
