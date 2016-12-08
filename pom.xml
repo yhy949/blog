@@ -281,7 +281,11 @@
         <version>3.1</version>
       </dependency>
       <!-- pinyin4j -->
-
+      <dependency>
+        <groupId>com.belerweb</groupId>
+        <artifactId>pinyin4j</artifactId>
+        <version>2.5.0</version>
+      </dependency>
       <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
