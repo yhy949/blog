@@ -20,10 +20,6 @@
       <json-version>2.3.2</json-version>
       <aspectj-version>1.7.4</aspectj-version>
       <c3p0.version>0.9.1.2</c3p0.version>
-      <mail-version>1.4.7</mail-version>
-
-      <fastjson_version>1.2.12</fastjson_version>
-      <json-lib_version>2.1</json-lib_version>
     </properties>
 
     <dependencies>
@@ -91,11 +87,6 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context-support</artifactId>
-        <version>${springframework-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
         <version>${springframework-version}</version>
       </dependency>
       <dependency>
@@ -221,7 +212,7 @@
       <dependency>
         <groupId>javax.mail</groupId>
         <artifactId>mail</artifactId>
-        <version>${mail-version}</version>
+        <version>1.4.7</version>
       </dependency>
       <!-- 数据源配置 -->
       <dependency>
@@ -290,28 +281,16 @@
         <version>3.1</version>
       </dependency>
       <!-- pinyin4j -->
-      <dependency>
-        <groupId>com.belerweb</groupId>
-        <artifactId>pinyin4j</artifactId>
-        <version>2.5.0</version>
-      </dependency>
-
 
       <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>fastjson</artifactId>
-        <version>${fastjson_version}</version>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.2.2</version>
       </dependency>
       <dependency>
-        <groupId>net.sf.json-lib</groupId>
-        <artifactId>json-lib</artifactId>
-        <version>${json-lib_version}</version>
-        <classifier>jdk15</classifier>
-      </dependency>
-      <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.17</version>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>4.2.2</version>
       </dependency>
     </dependencies>
   <build>

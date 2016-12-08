@@ -2,7 +2,7 @@ package com.blitz.blog.utils.tools;
 /**
  * 
  * @Description: 密码加密
- * @create Author: jianglong
+ * @create Author: y
  * @create Date: 2015-6-1
  */
 public class Coder {
