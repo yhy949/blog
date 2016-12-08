@@ -19,7 +19,7 @@ import java.util.Map;
  * @CreatDate:2015年8月6日
  * @Version:V1.0
  */
-public class BaseAction {
+public class BaseController {
 
 	protected Logger log = Logger.getLogger(getClass());
 

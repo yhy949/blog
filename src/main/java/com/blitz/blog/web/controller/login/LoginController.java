@@ -1,6 +1,6 @@
 package com.blitz.blog.web.controller.login;
 
-import com.blitz.blog.web.base.impl.BaseAction;
+import com.blitz.blog.web.base.impl.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/login")
-public class LoginAction extends BaseAction{
+public class LoginController extends BaseController {
 
     @RequestMapping("/index")
     public String index() {
