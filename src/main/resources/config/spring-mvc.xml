@@ -27,7 +27,7 @@
 	</bean>
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/pages/view"></property>
+		<property name="prefix" value="/WEB-INF/pages/views"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<!-- 类型转换器 -->
@@ -56,4 +56,9 @@
 	     <bean id="loginNotInterceptor" class="com.faded.utils.interceptors.LoginNotInterceptor"></bean>
 	    </mvc:interceptor>
     </mvc:interceptors>  -->
+	<!--设置不对静态资源拦截-->
+	<!--<mvc:resources location="/css/"  mapping="/css/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:default-servlet-handler />-->
 </beans>

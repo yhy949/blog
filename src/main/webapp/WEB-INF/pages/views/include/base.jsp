@@ -34,7 +34,7 @@
 			<nav class="nva">
 				<ul class="nav-list">
 				 <li class="nav-item">
-                        <a class="button-success pure-button" href="/">主页</a>
+                        <a class="button-success pure-button" href="${home}/blog/blog.jsp">主页</a>
                     </li>
                     <li class="nav-item">
                         <a class="button-success pure-button" href="/">归档</a>
