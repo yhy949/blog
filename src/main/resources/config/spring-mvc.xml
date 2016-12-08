@@ -59,6 +59,6 @@
 	<!--设置不对静态资源拦截-->
 	<!--<mvc:resources location="/css/"  mapping="/css/**"/>
 	<mvc:resources location="/images/" mapping="/images/**"/>
-	<mvc:resources location="/js/" mapping="/js/**"/>
-	<mvc:default-servlet-handler />-->
+	<mvc:resources location="/js/" mapping="/js/**"/>-->
+	<mvc:default-servlet-handler />
 </beans>
