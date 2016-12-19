@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogFriendDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogFriend" >
+            <id column="userid" property="userid" jdbcType="VARCHAR" />
+            <id column="friendid" property="friendid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            userid, friendid, id
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogFriend" >
+            insert into blog_friend (userid, friendid, id
+                  )
+            values (#{userid,jdbcType=VARCHAR}, #{friendid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}
+                  )
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogFriend" >
+            insert into blog_friend
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        userid,
+                  </if>
+                  <if test="friendid != null" >
+                        friendid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        #{userid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="friendid != null" >
+                        #{friendid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogFriendKey" >
+            delete from blog_friend
+            where userid = #{userid,jdbcType=VARCHAR}
+              and friendid = #{friendid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogFriend" >
+            update blog_friend
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+            </set>
+            where userid = #{userid,jdbcType=VARCHAR}
+              and friendid = #{friendid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogFriend" >
+            update blog_friend
+            set id = #{id,jdbcType=VARCHAR}
+            where userid = #{userid,jdbcType=VARCHAR}
+              and friendid = #{friendid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_friend
+            where userid = #{userid,jdbcType=VARCHAR}
+              and friendid = #{friendid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_friend
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_friend
+            <where >
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="friendid != null" >
+                        and friendid = #{friendid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_friend
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="friendid != null" >
+                        and friendid = #{friendid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+      </select>
+</mapper>

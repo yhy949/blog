@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogLeaveMsgDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogLeaveMsg" >
+            <id column="userid" property="userid" jdbcType="VARCHAR" />
+            <id column="leaverid" property="leaverid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="parentid" property="parentid" jdbcType="VARCHAR" />
+            <result column="content" property="content" jdbcType="VARCHAR" />
+            <result column="leave_time" property="leaveTime" jdbcType="TIMESTAMP" />
+            <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+            <result column="state" property="state" jdbcType="VARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            userid, leaverid, id, parentid, content, leave_time, reply_time, state
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogLeaveMsg" >
+            insert into blog_leavemsg (userid, leaverid, id, 
+                  parentid, content, leave_time, 
+                  reply_time, state)
+            values (#{userid,jdbcType=VARCHAR}, #{leaverid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, 
+                  #{parentid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{leaveTime,jdbcType=TIMESTAMP}, 
+                  #{replyTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR})
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogLeaveMsg" >
+            insert into blog_leavemsg
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        userid,
+                  </if>
+                  <if test="leaverid != null" >
+                        leaverid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="parentid != null" >
+                        parentid,
+                  </if>
+                  <if test="content != null" >
+                        content,
+                  </if>
+                  <if test="leaveTime != null" >
+                        leave_time,
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time,
+                  </if>
+                  <if test="state != null" >
+                        state,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        #{userid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="leaverid != null" >
+                        #{leaverid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="content != null" >
+                        #{content,jdbcType=VARCHAR},
+                  </if>
+                  <if test="leaveTime != null" >
+                        #{leaveTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        #{state,jdbcType=VARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogLeaveMsgKey" >
+            delete from blog_leavemsg
+            where userid = #{userid,jdbcType=VARCHAR}
+              and leaverid = #{leaverid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogLeaveMsg" >
+            update blog_leavemsg
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        parentid = #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="content != null" >
+                        content = #{content,jdbcType=VARCHAR},
+                  </if>
+                  <if test="leaveTime != null" >
+                        leave_time = #{leaveTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        state = #{state,jdbcType=VARCHAR},
+                  </if>
+            </set>
+            where userid = #{userid,jdbcType=VARCHAR}
+              and leaverid = #{leaverid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogLeaveMsg" >
+            update blog_leavemsg
+            set id = #{id,jdbcType=VARCHAR},
+                  parentid = #{parentid,jdbcType=VARCHAR},
+                  content = #{content,jdbcType=VARCHAR},
+                  leave_time = #{leaveTime,jdbcType=TIMESTAMP},
+                  reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  state = #{state,jdbcType=VARCHAR}
+            where userid = #{userid,jdbcType=VARCHAR}
+              and leaverid = #{leaverid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_leavemsg
+            where userid = #{userid,jdbcType=VARCHAR}
+              and leaverid = #{leaverid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_leavemsg
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_leavemsg
+            <where >
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="leaverid != null" >
+                        and leaverid = #{leaverid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=VARCHAR}
+                  </if>
+                  <if test="leaveTime != null" >
+                        and leave_time = #{leaveTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_leavemsg
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="leaverid != null" >
+                        and leaverid = #{leaverid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=VARCHAR}
+                  </if>
+                  <if test="leaveTime != null" >
+                        and leave_time = #{leaveTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+      </select>
+</mapper>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogUserLogCommentDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogUserLogComment" >
+            <id column="blogid" property="blogid" jdbcType="VARCHAR" />
+            <id column="commerterid" property="commerterid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="parentid" property="parentid" jdbcType="VARCHAR" />
+            <result column="content" property="content" jdbcType="VARCHAR" />
+            <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+            <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+            <result column="state" property="state" jdbcType="VARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            blogid, commerterid, id, parentid, content, comment_time, reply_time, state
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogUserLogComment" >
+            insert into blog_userlog_comment (blogid, commerterid, id, 
+                  parentid, content, comment_time, 
+                  reply_time, state)
+            values (#{blogid,jdbcType=VARCHAR}, #{commerterid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, 
+                  #{parentid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, 
+                  #{replyTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR})
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogUserLogComment" >
+            insert into blog_userlog_comment
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="blogid != null" >
+                        blogid,
+                  </if>
+                  <if test="commerterid != null" >
+                        commerterid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="parentid != null" >
+                        parentid,
+                  </if>
+                  <if test="content != null" >
+                        content,
+                  </if>
+                  <if test="commentTime != null" >
+                        comment_time,
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time,
+                  </if>
+                  <if test="state != null" >
+                        state,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="blogid != null" >
+                        #{blogid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="commerterid != null" >
+                        #{commerterid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="content != null" >
+                        #{content,jdbcType=VARCHAR},
+                  </if>
+                  <if test="commentTime != null" >
+                        #{commentTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        #{state,jdbcType=VARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogUserLogCommentKey" >
+            delete from blog_userlog_comment
+            where blogid = #{blogid,jdbcType=VARCHAR}
+              and commerterid = #{commerterid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogUserLogComment" >
+            update blog_userlog_comment
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        parentid = #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="content != null" >
+                        content = #{content,jdbcType=VARCHAR},
+                  </if>
+                  <if test="commentTime != null" >
+                        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        state = #{state,jdbcType=VARCHAR},
+                  </if>
+            </set>
+            where blogid = #{blogid,jdbcType=VARCHAR}
+              and commerterid = #{commerterid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogUserLogComment" >
+            update blog_userlog_comment
+            set id = #{id,jdbcType=VARCHAR},
+                  parentid = #{parentid,jdbcType=VARCHAR},
+                  content = #{content,jdbcType=VARCHAR},
+                  comment_time = #{commentTime,jdbcType=TIMESTAMP},
+                  reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  state = #{state,jdbcType=VARCHAR}
+            where blogid = #{blogid,jdbcType=VARCHAR}
+              and commerterid = #{commerterid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_userlog_comment
+            where blogid = #{blogid,jdbcType=VARCHAR}
+              and commerterid = #{commerterid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_userlog_comment
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_userlog_comment
+            <where >
+                  <if test="blogid != null" >
+                        and blogid = #{blogid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="commerterid != null" >
+                        and commerterid = #{commerterid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=VARCHAR}
+                  </if>
+                  <if test="commentTime != null" >
+                        and comment_time = #{commentTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_userlog_comment
+                  <if test="blogid != null" >
+                        and blogid = #{blogid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="commerterid != null" >
+                        and commerterid = #{commerterid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=VARCHAR}
+                  </if>
+                  <if test="commentTime != null" >
+                        and comment_time = #{commentTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+      </select>
+</mapper>

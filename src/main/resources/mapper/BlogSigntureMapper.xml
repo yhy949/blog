@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogSigntureDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogSignture" >
+            <id column="userid" property="userid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="replyid" property="replyid" jdbcType="VARCHAR" />
+            <result column="parentid" property="parentid" jdbcType="VARCHAR" />
+            <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+            <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+            <result column="state" property="state" jdbcType="VARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            userid, id, replyid, parentid, publish_time, reply_time, state
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogSignture" >
+            insert into blog_signature (userid, id, replyid, 
+                  parentid, publish_time, reply_time, 
+                  state)
+            values (#{userid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{replyid,jdbcType=VARCHAR}, 
+                  #{parentid,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, #{replyTime,jdbcType=TIMESTAMP}, 
+                  #{state,jdbcType=VARCHAR})
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogSignture" >
+            insert into blog_signature
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        userid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="replyid != null" >
+                        replyid,
+                  </if>
+                  <if test="parentid != null" >
+                        parentid,
+                  </if>
+                  <if test="publishTime != null" >
+                        publish_time,
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time,
+                  </if>
+                  <if test="state != null" >
+                        state,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        #{userid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="replyid != null" >
+                        #{replyid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="publishTime != null" >
+                        #{publishTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        #{state,jdbcType=VARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+            delete from blog_signature
+            where userid = #{userid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogSignture" >
+            update blog_signature
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="replyid != null" >
+                        replyid = #{replyid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="parentid != null" >
+                        parentid = #{parentid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="publishTime != null" >
+                        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="replyTime != null" >
+                        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="state != null" >
+                        state = #{state,jdbcType=VARCHAR},
+                  </if>
+            </set>
+            where userid = #{userid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogSignture" >
+            update blog_signature
+            set id = #{id,jdbcType=VARCHAR},
+                  replyid = #{replyid,jdbcType=VARCHAR},
+                  parentid = #{parentid,jdbcType=VARCHAR},
+                  publish_time = #{publishTime,jdbcType=TIMESTAMP},
+                  reply_time = #{replyTime,jdbcType=TIMESTAMP},
+                  state = #{state,jdbcType=VARCHAR}
+            where userid = #{userid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_signature
+            where userid = #{userid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_signature
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_signature
+            <where >
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="replyid != null" >
+                        and replyid = #{replyid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="publishTime != null" >
+                        and publish_time = #{publishTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_signature
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="replyid != null" >
+                        and replyid = #{replyid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="parentid != null" >
+                        and parentid = #{parentid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="publishTime != null" >
+                        and publish_time = #{publishTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="replyTime != null" >
+                        and reply_time = #{replyTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="state != null" >
+                        and state = #{state,jdbcType=VARCHAR}
+                  </if>
+      </select>
+</mapper>

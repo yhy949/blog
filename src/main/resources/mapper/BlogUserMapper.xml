@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogUserDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogUser" >
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="sex" property="sex" jdbcType="VARCHAR" />
+            <result column="username" property="username" jdbcType="VARCHAR" />
+            <result column="email" property="email" jdbcType="VARCHAR" />
+            <result column="password" property="password" jdbcType="VARCHAR" />
+            <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+            <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+            <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR" />
+            <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+            <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+            <result column="addr" property="addr" jdbcType="VARCHAR" />
+            <result column="qq" property="qq" jdbcType="VARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            id, sex, username, email, password, nickname, create_time, headimgurl, birthday, 
+            introduce, addr, qq
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogUser" >
+            insert into blog_user (id, sex, username, 
+                  email, password, nickname, 
+                  create_time, headimgurl, birthday, 
+                  introduce, addr, qq
+                  )
+            values (#{id,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+                  #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+                  #{createTime,jdbcType=TIMESTAMP}, #{headimgurl,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+                  #{introduce,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}
+                  )
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogUser" >
+            insert into blog_user
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="sex != null" >
+                        sex,
+                  </if>
+                  <if test="username != null" >
+                        username,
+                  </if>
+                  <if test="email != null" >
+                        email,
+                  </if>
+                  <if test="password != null" >
+                        password,
+                  </if>
+                  <if test="nickname != null" >
+                        nickname,
+                  </if>
+                  <if test="createTime != null" >
+                        create_time,
+                  </if>
+                  <if test="headimgurl != null" >
+                        headimgurl,
+                  </if>
+                  <if test="birthday != null" >
+                        birthday,
+                  </if>
+                  <if test="introduce != null" >
+                        introduce,
+                  </if>
+                  <if test="addr != null" >
+                        addr,
+                  </if>
+                  <if test="qq != null" >
+                        qq,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="sex != null" >
+                        #{sex,jdbcType=VARCHAR},
+                  </if>
+                  <if test="username != null" >
+                        #{username,jdbcType=VARCHAR},
+                  </if>
+                  <if test="email != null" >
+                        #{email,jdbcType=VARCHAR},
+                  </if>
+                  <if test="password != null" >
+                        #{password,jdbcType=VARCHAR},
+                  </if>
+                  <if test="nickname != null" >
+                        #{nickname,jdbcType=VARCHAR},
+                  </if>
+                  <if test="createTime != null" >
+                        #{createTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="headimgurl != null" >
+                        #{headimgurl,jdbcType=VARCHAR},
+                  </if>
+                  <if test="birthday != null" >
+                        #{birthday,jdbcType=VARCHAR},
+                  </if>
+                  <if test="introduce != null" >
+                        #{introduce,jdbcType=VARCHAR},
+                  </if>
+                  <if test="addr != null" >
+                        #{addr,jdbcType=VARCHAR},
+                  </if>
+                  <if test="qq != null" >
+                        #{qq,jdbcType=VARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_user
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_user
+            <where >
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="sex != null" >
+                        and sex = #{sex,jdbcType=VARCHAR}
+                  </if>
+                  <if test="username != null" >
+                        and username = #{username,jdbcType=VARCHAR}
+                  </if>
+                  <if test="email != null" >
+                        and email = #{email,jdbcType=VARCHAR}
+                  </if>
+                  <if test="password != null" >
+                        and password = #{password,jdbcType=VARCHAR}
+                  </if>
+                  <if test="nickname != null" >
+                        and nickname = #{nickname,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="headimgurl != null" >
+                        and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+                  </if>
+                  <if test="birthday != null" >
+                        and birthday = #{birthday,jdbcType=VARCHAR}
+                  </if>
+                  <if test="introduce != null" >
+                        and introduce = #{introduce,jdbcType=VARCHAR}
+                  </if>
+                  <if test="addr != null" >
+                        and addr = #{addr,jdbcType=VARCHAR}
+                  </if>
+                  <if test="qq != null" >
+                        and qq = #{qq,jdbcType=VARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_user
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="sex != null" >
+                        and sex = #{sex,jdbcType=VARCHAR}
+                  </if>
+                  <if test="username != null" >
+                        and username = #{username,jdbcType=VARCHAR}
+                  </if>
+                  <if test="email != null" >
+                        and email = #{email,jdbcType=VARCHAR}
+                  </if>
+                  <if test="password != null" >
+                        and password = #{password,jdbcType=VARCHAR}
+                  </if>
+                  <if test="nickname != null" >
+                        and nickname = #{nickname,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="headimgurl != null" >
+                        and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+                  </if>
+                  <if test="birthday != null" >
+                        and birthday = #{birthday,jdbcType=VARCHAR}
+                  </if>
+                  <if test="introduce != null" >
+                        and introduce = #{introduce,jdbcType=VARCHAR}
+                  </if>
+                  <if test="addr != null" >
+                        and addr = #{addr,jdbcType=VARCHAR}
+                  </if>
+                  <if test="qq != null" >
+                        and qq = #{qq,jdbcType=VARCHAR}
+                  </if>
+      </select>
+
+      <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+            SELECT * FROM blog_user WHERE username=#{primaryKey}
+      </select>
+</mapper>

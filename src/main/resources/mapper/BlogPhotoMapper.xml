@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogPhotoDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogPhoto" >
+            <id column="albumid" property="albumid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="photourl" property="photourl" jdbcType="VARCHAR" />
+            <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            albumid, id, photourl, create_time
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogPhoto" >
+            insert into blog_photo (albumid, id, photourl, 
+                  create_time)
+            values (#{albumid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{photourl,jdbcType=VARCHAR}, 
+                  #{createTime,jdbcType=TIMESTAMP})
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogPhoto" >
+            insert into blog_photo
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="albumid != null" >
+                        albumid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="photourl != null" >
+                        photourl,
+                  </if>
+                  <if test="createTime != null" >
+                        create_time,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="albumid != null" >
+                        #{albumid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="photourl != null" >
+                        #{photourl,jdbcType=VARCHAR},
+                  </if>
+                  <if test="createTime != null" >
+                        #{createTime,jdbcType=TIMESTAMP},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+            delete from blog_photo
+            where albumid = #{albumid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogPhoto" >
+            update blog_photo
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="photourl != null" >
+                        photourl = #{photourl,jdbcType=VARCHAR},
+                  </if>
+                  <if test="createTime != null" >
+                        create_time = #{createTime,jdbcType=TIMESTAMP},
+                  </if>
+            </set>
+            where albumid = #{albumid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogPhoto" >
+            update blog_photo
+            set id = #{id,jdbcType=VARCHAR},
+                  photourl = #{photourl,jdbcType=VARCHAR},
+                  create_time = #{createTime,jdbcType=TIMESTAMP}
+            where albumid = #{albumid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_photo
+            where albumid = #{albumid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_photo
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            from blog_photo
+            <where >
+                  <if test="albumid != null" >
+                        and albumid = #{albumid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="photourl != null" >
+                        and photourl = #{photourl,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_photo
+                  <if test="albumid != null" >
+                        and albumid = #{albumid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="photourl != null" >
+                        and photourl = #{photourl,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+      </select>
+</mapper>

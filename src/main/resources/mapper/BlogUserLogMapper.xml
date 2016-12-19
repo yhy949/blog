@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blitz.blog.web.dao.blog.BlogUserLogDao" >
+      <resultMap id="BaseResultMap" type="com.blitz.blog.web.model.blog.BlogUserLog" >
+            <id column="userid" property="userid" jdbcType="VARCHAR" />
+            <result column="id" property="id" jdbcType="VARCHAR" />
+            <result column="title" property="title" jdbcType="VARCHAR" />
+            <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+            <result column="readtimes" property="readtimes" jdbcType="INTEGER" />
+            <result column="goodtimes" property="goodtimes" jdbcType="INTEGER" />
+      </resultMap>
+      <resultMap id="ResultMapWithBLOBs" type="com.blitz.blog.web.model.blog.BlogUserLog" extends="BaseResultMap" >
+            <result column="content" property="content" jdbcType="LONGVARCHAR" />
+      </resultMap>
+      <sql id="Base_Column_List" >
+            userid, id, title, create_time, readtimes, goodtimes
+      </sql>
+      <sql id="Blob_Column_List" >
+            content
+      </sql>
+      <insert id="insert" parameterType="com.blitz.blog.web.model.blog.BlogUserLog" >
+            insert into blog_userlog (userid, id, title, 
+                  create_time, readtimes, goodtimes, 
+                  content)
+            values (#{userid,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+                  #{createTime,jdbcType=TIMESTAMP}, #{readtimes,jdbcType=INTEGER}, #{goodtimes,jdbcType=INTEGER}, 
+                  #{content,jdbcType=LONGVARCHAR})
+      </insert>
+      <insert id="insertSelective" parameterType="com.blitz.blog.web.model.blog.BlogUserLog" >
+            insert into blog_userlog
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        userid,
+                  </if>
+                  <if test="id != null" >
+                        id,
+                  </if>
+                  <if test="title != null" >
+                        title,
+                  </if>
+                  <if test="createTime != null" >
+                        create_time,
+                  </if>
+                  <if test="readtimes != null" >
+                        readtimes,
+                  </if>
+                  <if test="goodtimes != null" >
+                        goodtimes,
+                  </if>
+                  <if test="content != null" >
+                        content,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="userid != null" >
+                        #{userid,jdbcType=VARCHAR},
+                  </if>
+                  <if test="id != null" >
+                        #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="title != null" >
+                        #{title,jdbcType=VARCHAR},
+                  </if>
+                  <if test="createTime != null" >
+                        #{createTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="readtimes != null" >
+                        #{readtimes,jdbcType=INTEGER},
+                  </if>
+                  <if test="goodtimes != null" >
+                        #{goodtimes,jdbcType=INTEGER},
+                  </if>
+                  <if test="content != null" >
+                        #{content,jdbcType=LONGVARCHAR},
+                  </if>
+            </trim>
+      </insert>
+      <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+            delete from blog_userlog
+            where userid = #{userid,jdbcType=VARCHAR}
+      </delete>
+      <update id="updateByPrimaryKeySelective" parameterType="com.blitz.blog.web.model.blog.BlogUserLog" >
+            update blog_userlog
+            <set >
+                  <if test="id != null" >
+                        id = #{id,jdbcType=VARCHAR},
+                  </if>
+                  <if test="title != null" >
+                        title = #{title,jdbcType=VARCHAR},
+                  </if>
+                  <if test="createTime != null" >
+                        create_time = #{createTime,jdbcType=TIMESTAMP},
+                  </if>
+                  <if test="readtimes != null" >
+                        readtimes = #{readtimes,jdbcType=INTEGER},
+                  </if>
+                  <if test="goodtimes != null" >
+                        goodtimes = #{goodtimes,jdbcType=INTEGER},
+                  </if>
+                  <if test="content != null" >
+                        content = #{content,jdbcType=LONGVARCHAR},
+                  </if>
+            </set>
+            where userid = #{userid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByKeyWithBLOBs" parameterType="com.blitz.blog.web.model.blog.BlogUserLog" >
+            update blog_userlog
+            set id = #{id,jdbcType=VARCHAR},
+                  title = #{title,jdbcType=VARCHAR},
+                  create_time = #{createTime,jdbcType=TIMESTAMP},
+                  readtimes = #{readtimes,jdbcType=INTEGER},
+                  goodtimes = #{goodtimes,jdbcType=INTEGER},
+                  content = #{content,jdbcType=LONGVARCHAR}
+            where userid = #{userid,jdbcType=VARCHAR}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.blitz.blog.web.model.blog.BlogUserLog" >
+            update blog_userlog
+            set id = #{id,jdbcType=VARCHAR},
+                  title = #{title,jdbcType=VARCHAR},
+                  create_time = #{createTime,jdbcType=TIMESTAMP},
+                  readtimes = #{readtimes,jdbcType=INTEGER},
+                  goodtimes = #{goodtimes,jdbcType=INTEGER}
+            where userid = #{userid,jdbcType=VARCHAR}
+      </update>
+      <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+            select 
+            <include refid="Base_Column_List" />
+            ,
+            <include refid="Blob_Column_List" />
+            from blog_userlog
+            where userid = #{userid,jdbcType=VARCHAR}
+      </select>
+      <select id="findAll" resultMap="BaseResultMap" >
+            select 
+            <include refid="Base_Column_List" />
+            from blog_userlog
+      </select>
+      <select id="getCount" resultType="int" >
+            select count(1)
+            ,
+            <include refid="Blob_Column_List" />
+            from blog_userlog
+            <where >
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="title != null" >
+                        and title = #{title,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="readtimes != null" >
+                        and readtimes = #{readtimes,jdbcType=INTEGER}
+                  </if>
+                  <if test="goodtimes != null" >
+                        and goodtimes = #{goodtimes,jdbcType=INTEGER}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=LONGVARCHAR}
+                  </if>
+            </where>
+      </select>
+      <select id="getPageAll" resultMap="ResultMapWithBLOBs" >
+            select 
+            <include refid="Base_Column_List" />
+            ,
+            <include refid="Blob_Column_List" />
+            from blog_userlog
+                  <if test="userid != null" >
+                        and userid = #{userid,jdbcType=VARCHAR}
+                  </if>
+                  <if test="id != null" >
+                        and id = #{id,jdbcType=VARCHAR}
+                  </if>
+                  <if test="title != null" >
+                        and title = #{title,jdbcType=VARCHAR}
+                  </if>
+                  <if test="createTime != null" >
+                        and create_time = #{createTime,jdbcType=TIMESTAMP}
+                  </if>
+                  <if test="readtimes != null" >
+                        and readtimes = #{readtimes,jdbcType=INTEGER}
+                  </if>
+                  <if test="goodtimes != null" >
+                        and goodtimes = #{goodtimes,jdbcType=INTEGER}
+                  </if>
+                  <if test="content != null" >
+                        and content = #{content,jdbcType=LONGVARCHAR}
+                  </if>
+      </select>
+</mapper>
